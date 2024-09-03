@@ -9,3 +9,5 @@ def factorial(n):
         result *= n
         n -= 1  # Decrement n to ensure the loop terminates
     return result
+f = factorial(int(sys.argv[1]))
+print(f)
