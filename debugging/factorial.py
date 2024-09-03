@@ -2,27 +2,25 @@
 import sys
 
 def factorial(n):
-    if n < 0:
-        raise ValueError("Factorial is not defined for negative numbers")
     result = 1
     while n > 1:
         result *= n
-        n -= 1  # Decrement n to eventually end the loop
+        n -= 1
     return result
 
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: ./factorial.py <positive_integer>")
-        return
+if len(sys.argv) !=2:
+    print("Usage: python3 script.py <number>")
+    sys.exit(1)
 
-    try:
-        number = int(sys.argv[1])
-        if number < 0:
-            raise ValueError("Input must be a positive integer")
-        print(factorial(number))
-    except ValueError as e:
-        print(f"Error: {e}")
+try:
+    num = int(sys.argv[1])
+except ValueError:
+    print("Please provide a valid integer.")
+    sys.exit(1)
 
-if __name__ == "__main__":
-    main()
-
+try:
+    f = factorial(num)
+    print(f)
+except ValueError as e:
+    print(e)
+    sys.exit(1)
