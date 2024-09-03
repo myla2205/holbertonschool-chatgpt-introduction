@@ -7,7 +7,22 @@ def factorial(n):
     result = 1
     while n > 1:
         result *= n
-        n -= 1  # Decrement n to ensure the loop terminates
+        n -= 1  # Decrement n to eventually end the loop
     return result
-f = factorial(int(sys.argv[1]))
-print(f)
+
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: ./factorial.py <positive_integer>")
+        return
+
+    try:
+        number = int(sys.argv[1])
+        if number < 0:
+            raise ValueError("Input must be a positive integer")
+        print(factorial(number))
+    except ValueError as e:
+        print(f"Error: {e}")
+
+if __name__ == "__main__":
+    main()
+
